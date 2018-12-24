@@ -1,4 +1,4 @@
-###solr-ansj
+### solr-ansj
 
 [![Build Status](https://travis-ci.org/blueshen/solr-ansj.svg)](https://travis-ci.org/blueshen/solr-ansj)
 

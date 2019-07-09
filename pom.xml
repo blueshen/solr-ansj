@@ -4,7 +4,7 @@
 
     <groupId>cn.shenyanchao</groupId>
     <artifactId>solr-ansj</artifactId>
-    <version>5.4.0</version>
+    <version>8.1.0</version>
     <packaging>jar</packaging>
 
     <repositories>
@@ -16,8 +16,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lucene.version>5.4.0</lucene.version>
-        <jdk.version>1.7</jdk.version>
+        <lucene.version>8.1.0</lucene.version>
+        <jdk.version>1.8</jdk.version>
         <ansj.version>3.0</ansj.version>
         <slf4j.version>1.7.12</slf4j.version>
     </properties>

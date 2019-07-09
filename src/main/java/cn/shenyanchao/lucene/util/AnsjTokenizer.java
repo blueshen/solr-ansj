@@ -1,5 +1,13 @@
 package cn.shenyanchao.lucene.util;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.ansj.domain.Term;
 import org.ansj.domain.TermNatures;
 import org.ansj.lucene.util.PorterStemmer;
@@ -11,19 +19,21 @@ import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
 import org.apache.lucene.util.AttributeFactory;
 
-import java.io.*;
-import java.util.HashSet;
-import java.util.Set;
-
 public class AnsjTokenizer extends Tokenizer {
-    // 当前词
+    /**
+     * 当前词
+     */
     private final CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);
-    // 偏移量
+    /**
+     * 偏移量
+     */
     private final OffsetAttribute offsetAtt = addAttribute(OffsetAttribute.class);
-    // 距离
+    /**
+     * 距离
+     */
     private final PositionIncrementAttribute positionAttr = addAttribute(PositionIncrementAttribute.class);
-
-    protected Analysis ta = null;
+    private final PorterStemmer stemmer = new PorterStemmer();
+    protected Analysis ta;
     /**
      * 自定义停用词
      */
@@ -32,8 +42,6 @@ public class AnsjTokenizer extends Tokenizer {
      * 是否分析词干.进行单复数,时态的转换
      */
     private boolean pstemming;
-
-    private final PorterStemmer stemmer = new PorterStemmer();
 
     public AnsjTokenizer(Analysis ta, String stopwordsDir, boolean pstemming) {
         this.ta = ta;
